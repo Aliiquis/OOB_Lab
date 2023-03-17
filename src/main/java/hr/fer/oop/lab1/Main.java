@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         increasing(new int[10]);
         System.out.println(frequency(new int[]{4, 67, -2, 0, -15, 0, 4, 0}, 1));
+        System.out.println("\"" + bezBrojeva(new String("Danas je va4ni jako hlad112323n6o.")) + "\"");
     }
 
     static void increasing(int[] arr) {
@@ -21,5 +22,25 @@ public class Main {
             }
         }
         return count;
+    }
+
+    public static String bezBrojeva(String str) {
+        StringBuilder sb = new StringBuilder();
+        String[] rijeci = str.split(" ");
+        for (String s : rijeci) {
+            for (int i = 0; i < s.length(); i++) {
+                if (Character.isDigit(s.charAt(i))) {
+                    sb.append(s + " ");
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < sb.length(); i++) {
+            if (Character.isDigit(sb.charAt(i))) {
+                sb.deleteCharAt(i);
+                i--;
+            }
+        }
+        return sb.length() == 0 ? "" : sb.deleteCharAt(sb.length() - 1).toString();
     }
 }
